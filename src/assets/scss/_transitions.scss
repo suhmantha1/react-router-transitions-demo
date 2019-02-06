@@ -14,6 +14,8 @@
   top: 0;
   left: 0;
   width: 100%;
+  -webkit-overflow-scrolling: touch;
+  transition: 1s ease-in-out;
 }
 
 /*
@@ -38,24 +40,93 @@
 
 
 /*
-  SLIDE ANIMATIONS
-  1. home to blog
-  2. blog to home
-  3. home to about
-  4. about to home
+  Slide Right Transition
+    1. Home to Blog (page--blog + page--home)
+    2. About to Home (page--about + page--home)
 */
-.slide-right-appear,
-.slide-right-enter {
-  transform: translateX(-100%);
-  z-index: 1;
+
+.from-page--home .page--blog.page-enter {
+  transform: translate(-100%, 0);
 }
 
-.slide-right-appear-active,
-.slide-right-enter.fade-enter-active {
-  transform: translateX(0);
-  transition: transform 450ms linear 150ms;
+.from-page--home .page--blog.page-enter-active {
+  transform: translate(0, 0);
 }
 
-.slide-right-exit {
-  transform: translateX(0);
+.from-page--home .page--blog + .page--home.page-exit {
+  transform: translate(100%, 0);
+}
+
+.from-page--about .page--home.page-enter {
+  transform: translate(-100%, 0);
+}
+
+.from-page--about .page--home.page-enter-active {
+  transform: translate(0, 0);
+}
+
+.from-page--about .page--home + .page--about.page-exit {
+  transform: translate(100%, 0);
+}
+
+/*
+  Slide Left Transition
+    1. Blog to Home (page--home + page--blog)
+    2. Home to About (page--about + page--home)
+*/
+.from-page--blog .page--home.page-enter {
+  transform: translate(100%, 0);
+}
+
+.from-page--blog .page--home.page-enter-active {
+  transform: translate(0, 0);
+}
+
+.from-page--blog .page--home + .page--blog.page-exit {
+  transform: translate(-100%, 0);
+}
+
+.from-page--home .page--about.page-enter {
+  transform: translate(100%, 0);
+}
+
+.from-page--home .page--about.page-enter-active {
+  transform: translate(0, 0);
+}
+
+.from-page--home .page--about + .page--home.page-exit {
+  transform: translate(-100%, 0);
+}
+
+
+/*
+  Slide Down Transition
+    1. Blog to About (page--about + page--blog)
+*/
+.from-page--blog .page--about.page-enter {
+  transform: translate(0, -100%);
+}
+
+.from-page--blog .page--about.page-enter-active {
+  transform: translate(0, 0);
+}
+
+.from-page--blog .page--about + .page--blog.page-exit {
+  transform: translate(0, 100%);
+}
+
+/*
+  Slide Up Transition
+    1. About to Blog (page--blog + page--about)
+*/
+.from-page--about .page--blog.page-enter {
+  transform: translate(0, 100%);
+}
+
+.from-page--about .page--blog.page-enter-active {
+  transform: translate(0, 0);
+}
+
+.from-page--about .page--blog + .page--about.page-exit {
+  transform: translate(0, -100%);
 }

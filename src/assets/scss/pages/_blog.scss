@@ -2,4 +2,16 @@
 
 .page--blog {
   background-color: $blue;
+
+  .nav--home {
+    .navItem:first-child {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &:hover {
+        padding: 30px 40px 20px;
+      }
+    }
+  }
 }

@@ -2,4 +2,18 @@
 
 .page--about {
   background-color: $gold;
+
+  .nav--home {
+    .navItem:last-child {
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+
+      &:hover {
+        padding: 20px 40px 30px;
+      }
+    }
+  }
 }

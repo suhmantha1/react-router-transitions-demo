@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router';
-import { NavLink } from 'react-router-dom';
 import {
     CSSTransition,
     TransitionGroup,
@@ -10,48 +9,39 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Blog from './pages/Blog';
 
-class App extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.currentPage = null;
-    }
+let fromPage = window.location.pathname.replace('/', '');
+if (!fromPage) {
+    fromPage = 'home';
+}
 
-    determineTransition(location) {
-        // TODO transitions based on page relations
-        // Compare current and new state to determine transition
-        if (!this.currentPage) {
-            // initial page load
-            this.currentPage = location.pathname;
-            return 'slide-right'; // TODO
+class App extends React.Component {
+    pageClass = 'App from-page--' + fromPage;
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            const prevPage = prevProps.location.pathname.replace('/', '');
+            fromPage = prevPage ? prevPage : 'home';
+            this.pageClass = 'App from-page--' + fromPage;
+
+            // This function is called after template is rendered, so force update to get correct class
+            this.forceUpdate();
+
         }
-
-        const currentPage = this.currentPage;
-        const newPage = location.pathname;
-
-        if (currentPage === '/' && newPage === '/blog') {
-            return 'slide-right';
-        } else if (currentPage === '/' && newPage === '/about') {
-            return 'slide-left';
-        }
-
-        return 'fade';
-    }
+    };
 
   render() {
     return (
-      <div className="App">
-        {/*<nav className="nav">*/}
-            {/*<NavLink exact to="/" activeClassName="active">Home</NavLink>*/}
-            {/*<NavLink to="/about" activeClassName="active">About</NavLink>*/}
-        {/*</nav>*/}
+      <div className={`App from-page--${fromPage}`}>
           <Route render={({location}) => (
               <TransitionGroup>
                   <CSSTransition
-                      key={location.key}
-                      timeout={450}
-                      classNames="fade">
+                      key={location.pathname}
+                      timeout={{
+                          enter: 1000,
+                          exit: 1000,
+                      }}
+                      classNames="page">
                       <Switch location={location}>
-                          <Route exact path="/" component={Home}/>
+                          <Route exact path="/" component={Home} className="test"/>
                           <Route path="/about" component={About}/>
                           <Route path="/blog" component={Blog}/>
                           <Route path="/blog/:post" component={Home}/>

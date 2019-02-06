@@ -9,9 +9,12 @@ Created by @suhmantha1 for Use All Five's Lunch n' Learn.
 
 ## Sources
 1. React Docs
-2. https://reacttraining.com
-3. https://reactcommunity.org/react-transition-group/
-3. https://www.youtube.com/watch?v=NUQkajBdnmQ
+2. React routing issues: https://medium.com/onfido-tech/animations-with-react-router-8e97222e25e1
+3. https://reacttraining.com
+4. https://reactcommunity.org/react-transition-group/
+5. How to build simple fade animation: https://www.youtube.com/watch?v=NUQkajBdnmQ
+6. Explanatory for TransitionGroup: https://medium.com/@pshrmn/a-shallow-dive-into-react-router-v4-animated-transitions-4b73f634992a
+7. Base transitions on page history: https://blog.etch.team/react-page-transitions-make-your-website-feel-native-bf2804b011dc
 
 ## Steps
 1. Implement `<BrowserRouter>` in `index.js`, which will automatically handle route history and UI component display
