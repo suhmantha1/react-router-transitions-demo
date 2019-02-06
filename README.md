@@ -1,3 +1,30 @@
+# React Router Transition Demo
+Created by @suhmantha1 for Use All Five's Lunch n' Learn.
+
+## Libraries
+`react-router`
+`react-router-dom`
+`react-transition-group`
+
+
+## Sources
+1. React Docs
+2. https://reacttraining.com
+3. https://reactcommunity.org/react-transition-group/
+3. https://www.youtube.com/watch?v=NUQkajBdnmQ
+
+## Steps
+1. Implement `<BrowserRouter>` in `index.js`, which will automatically handle route history and UI component display
+2. Add `Switch` in `app.js`, which renders routes based on the specified tag.
+3. Install `react-transition-group`, and import in `app.js` in order to use around the `Switch`
+4. In `app.js`, create wrap the `Switch` in a `CSSTransition`
+5. In `app.js`, wrap the `CSSTransition` in a `TransitionGroup`
+6. Render an empty route in `app.js`, and move the `TransitionGroup` inside so that it's always rendered
+7. To render multiple pages at the same time in the group by adding `Location Key` to the `CssTransition`. At this point, when you change routes, there is a `timeout` ms time where both pages are rendered at the same time.
+8. Pass the `location` to the `Switch` so that it knows what routes to render on transition
+9. Add styling to animate the transitions
+
+## React Default Instructions
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

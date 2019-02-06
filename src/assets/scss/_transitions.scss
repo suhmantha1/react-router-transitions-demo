@@ -1,0 +1,61 @@
+/*
+  In the CSSTransition, set the timeout, which is the number of ms the routes will simultaneously be rendered
+
+  When transition is applied:
+  1. [classNames]-exit class is applied to current route
+  2. [classNames-exit-active] class is applied for [timeout]ms on current route
+  3. [classNames-enter] class is applied to new route
+  4. after [timeout]ms, [classNames-enter-active] class is applied to new route
+*/
+
+/* While pages are simultaneously rendered, position incoming page absolutely behind exiting page*/
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/*
+  Simple Fade in/out animation
+  Enter transition 450ms, exit transition 1500ms
+*/
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 450ms linear 150ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+
+/*
+  SLIDE ANIMATIONS
+  1. home to blog
+  2. blog to home
+  3. home to about
+  4. about to home
+*/
+.slide-right-appear,
+.slide-right-enter {
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+.slide-right-appear-active,
+.slide-right-enter.fade-enter-active {
+  transform: translateX(0);
+  transition: transform 450ms linear 150ms;
+}
+
+.slide-right-exit {
+  transform: translateX(0);
+}
