@@ -130,3 +130,34 @@
 .from-page--about .page--blog + .page--about.page-exit {
   transform: translate(0, -100%);
 }
+
+/*
+  GROW IN
+    1. BLOG to POST (page--blog + page--blog-post)
+*/
+.from-page--blog .page--blog-post {
+  z-index: 100;
+}
+.from-page--blog .page--blog-post.page-enter {
+  transform: scale(0);
+}
+
+.from-page--blog .page--blog-post.page-enter-active {
+  transform: scale(1);
+}
+
+.from-page--blog .page--blog-post + .page--blog-post.page-exit {
+  transform: scale(0);
+}
+
+/*
+  GROW OUT
+    1. POST to BLOG (page--blog-post + page--blog)
+*/
+.from-page--post .page--blog-post.page-exit {
+  z-index: 100;
+  transform: scale(1);
+}
+.from-page--post .page--blog-post.page-exit-active {
+  transform: scale(0);
+}

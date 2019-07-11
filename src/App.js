@@ -8,17 +8,23 @@ import './App.scss';
 import Home from './pages/Home';
 import About from './pages/About';
 import Blog from './pages/Blog';
+import BlogPost from './pages/Blog-Post';
 
 let fromPage = window.location.pathname.replace('/', '');
 if (!fromPage) {
     fromPage = 'home';
+} else if (fromPage.indexOf('blog/') >= 0) {
+    fromPage = 'post'
 }
 
 class App extends React.Component {
     pageClass = 'App from-page--' + fromPage;
     componentDidUpdate(prevProps) {
         if (this.props.location.pathname !== prevProps.location.pathname) {
-            const prevPage = prevProps.location.pathname.replace('/', '');
+            let prevPage = prevProps.location.pathname.replace('/', '');
+            if (prevPage.indexOf('blog/') >= 0) {
+                prevPage = 'post'
+            }
             fromPage = prevPage ? prevPage : 'home';
             this.pageClass = 'App from-page--' + fromPage;
 
@@ -43,8 +49,8 @@ class App extends React.Component {
                       <Switch location={location}>
                           <Route exact path="/" component={Home} className="test"/>
                           <Route path="/about" component={About}/>
-                          <Route path="/blog" component={Blog}/>
-                          <Route path="/blog/:post" component={Home}/>
+                          <Route exact path="/blog" component={Blog}/>
+                          <Route path={`/blog/:post`} component={BlogPost}/>
                           <Route component={Home}/>
                       </Switch>
                   </CSSTransition>
